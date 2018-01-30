@@ -1,0 +1,142 @@
+A: Form teams
+Roles:
+        Driver - Natalie Kadonaga
+        Navigator - Mek Jenrungrot
+
+
+B: Objectives
+C: Download and install Git
+D: Getting help
+
+
+Q. What does git help do?
+
+It lists all the git commands together with their functionality.
+        
+Q. What does -ag cause git help to do?
+
+It lists git commands based on different directories and also shows the common guides, such as git workflow, etc. 
+
+
+E: Identity yourself
+
+
+Q. What are these commands doing?
+
+It sets the user credentials for the git program. 
+
+Q. What is the purpose of --global?
+
+It sets the credentials to the global configuration files. 
+
+
+F: Create a repository
+
+
+Q. By default any file that starts with . is hidden. How do you display a hidden file?
+        ls -a
+Q. Run this command to show the hidden files in the current directory. Are there any?
+        There is no hidden files.
+
+Q. Run the git init command.
+Q. Check for hidden files again. What was created by git init?
+The directory named .git
+
+Q. What do you think would happen if you delete .git?
+        You will not be able to use git commands, as the current directory becomes normal folder as it was before.
+
+Q. Using your observations to the previous questions, answer the following. You find an old project on your hard drive. You do not remember if it is a under version control. What could you look for to determine if the project is being managed using git?
+        If there is a .git folder, you may believe that the current directory is managed under the version control git.
+
+
+G: Basic commands
+
+
+Q. What kind of information does git status report?
+        It describes the changes made in the current working directory. It also contains information like what changes are uncommitted.
+Q. What does git add names.txt do?
+        
+        It adds “names.txt” to a list of files to be committed.
+
+
+Q. What does git commit -m "Add our names." do?
+        
+        It commits (e.g. making a checkpoint) with a message “Add our names.”
+
+
+Q. What does git add . do? What do you think . means?
+        
+        It adds the current directory. “.” means the current directory.
+Q. What does git commit (without -m) do?
+        It opens the text editor (usually vim) and asks you to put messages/comments corresponding to the commit.
+Q. If you want to write a more detailed commit message (which is good practice) what command would you use?
+git commit
+Q. What does git log do?
+
+
+It describes the list of commits in reverse chronological order.
+
+
+
+
+H: Stage/Cache/Index
+Q. Below write each file name under the state that its changes are currently in. Compose a definition for each state.
+        Staged
+        names.txt
+        “Staged” are changes to be committed.
+
+
+        Unstaged:
+        movies.txt - modified
+        “Unstaged” are changes to existing files that will not be committed.
+
+
+        Untracked:
+        foods.txt 
+        “Untracked” are new files that will not be committed.
+
+
+Q. If you run git commit what changes will be committed (don't do it)?
+        
+The changes made in “names.txt” will be committed.
+
+
+Q. What command do you run to stage changes?
+We ran git add.
+
+
+Q. What command do you run to unstage changes?
+
+
+git reset HEAD <filename>
+
+
+Q. What does git diff display?
+It shows the changes in the working tree not yet staged for the next commit.
+
+
+Q. What does git diff --cached display?
+It shows the difference between what is committed and what will be committed.
+
+
+Q. Formulate a sequence of commands to unstage changes to names.txt, and stage the changes to movies.txt. Execute your commands and confirm they worked.
+
+
+git reset HEAD names.txt
+git add movies.txt
+
+
+Q. Edit movies.txt, change any one of the movies, and save it. Then run git status. What do you observe? Explain what you think is going on.
+movies.txt also appeared in the Unstaged section as being modified. The staged movies.txt corresponds to the changes made earlier before the edit. The unstaged movies.txt corresponds to the latest change we just made.  
+
+
+Q. Delete names.txt. Then run git status. What do you observe? Explain what you think is going on.
+
+
+The names.txt shows up in the Unstaged section. If we commit now, the change to delete names.txt will not be committed.
+
+
+Q. Rename movies.txt to last-movies. Run git status. Observe and explain.
+
+
+Now, movies.txt is under Unstaged as deleted and last-movies.txt is under Untracked. The staged changes to movies.txt are still there. This is because renaming the file appears the same as deleting the old one and making a new file.
